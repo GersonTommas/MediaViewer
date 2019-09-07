@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="MediaViewer.Views.MenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Main Grid -->
+    <Grid TextBlock.FontSize="72">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <!-- Video -->
+        <Button Content="Video"
+                Grid.ColumnSpan="2"
+                Click="Video_Click" />
+        <!-- Music -->
+        <Button Content="Music"
+                Grid.Row="1"
+                Click="Music_Click" />
+        <!-- Pictures -->
+        <Button Content="Pictures" 
+                Grid.Row="1"
+                Grid.Column="1"
+                Click="Pictures_Click" />
+
+    </Grid>
+    
+</UserControl>
