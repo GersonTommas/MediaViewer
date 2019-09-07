@@ -15,9 +15,10 @@ namespace MediaViewer.Presenter
             _controller.DisplayInShell(new MenuView(this));
         }
 
-        public void DisplayPictures()
+        public void DisplayPictures(string myPicturesPath = null)
         {
-            string myPicturesPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+            if (myPicturesPath == null)
+                myPicturesPath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
             Display<PictureView, Picture>(myPicturesPath, "*.jpg", "*.gif", "*.png", "*.bmp");
         }
