@@ -6,7 +6,16 @@ namespace MediaViewer.Presenter
 {
     public class ApplicationController
     {
+
+        #region Private Variables
+
+        // Instance of Main Window
         private readonly MainWindow _shell;
+
+        #endregion
+
+
+        #region Constructor
 
         /// <summary>
         /// Default Constructor
@@ -17,11 +26,28 @@ namespace MediaViewer.Presenter
             _shell = shell;
         }
 
+        #endregion
+
+
+        #region Show Manu Function
+
+        /// <summary>
+        /// Returns to the Main Menu
+        /// </summary>
         public void ShowMenu()
         {
             new MenuPresenter(this);
         }
 
+        #endregion
+
+
+        #region Change View
+
+        /// <summary>
+        /// Cleans the Buffer and loads the new View
+        /// </summary>
+        /// <param name="view"></param>
         public void DisplayInShell(object view)
         {
             GC.Collect();
@@ -29,6 +55,11 @@ namespace MediaViewer.Presenter
 
             _shell.TransitionTo(view);
         }
+
+        #endregion
+
+
+        #region Directory Request
 
         /// <summary>
         /// Asks the User to select a directory
@@ -52,5 +83,8 @@ namespace MediaViewer.Presenter
             // If nothing is selected pass an empty string
             return string.Empty;
         }
+
+        #endregion
+
     }
 }

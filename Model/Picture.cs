@@ -8,10 +8,25 @@ using System.Windows.Threading;
 
 namespace MediaViewer.Model
 {
+    /// <summary>
+    /// Class to map files as Pictures (Derives from Media), has properties FileInfo _fileInfo and Uri _uri
+    /// </summary>
     public class Picture : Media
     {
+
+        #region Private Variables
+
+        // Image as Thumbnail
         private ImageSource _thumbnail;
 
+        #endregion
+
+
+        #region Public Variables
+
+        /// <summary>
+        /// Image as Thumbnail one by one, by calling the "LoadImage" void
+        /// </summary>
         public ImageSource Thumbnail
         {
             get
@@ -25,6 +40,12 @@ namespace MediaViewer.Model
             }
         }
 
+        #endregion
+
+
+        #region Helper
+
+        // Load Imnages one by one
         private void LoadImage(object state)
         {
             byte[] buffer = File.ReadAllBytes(_fileInfo.FullName);
@@ -36,5 +57,8 @@ namespace MediaViewer.Model
 
             Application.Current.Dispatcher.Invoke(DispatcherPriority.Normal, (Action)delegate { OnPropertyChanged("Thumbnail"); });
         }
+
+        #endregion
+
     }
 }

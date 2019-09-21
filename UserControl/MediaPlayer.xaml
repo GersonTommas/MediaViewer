@@ -4,37 +4,127 @@
 
     <DockPanel>
 
-        <Grid DockPanel.Dock="Bottom">
-            
+        <Grid DockPanel.Dock="Bottom"
+              HorizontalAlignment="Center"
+              Width="400" Height="50"
+              Background="{StaticResource MediaControlPanelBackground}">
+
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="2"
-                    Content="Stop"
-                    Click="Stop_Click" />
+            <!-- Commands Grid (Play/Pause, Stop, Mute) -->
+            <Grid Grid.Column="1"
+                  HorizontalAlignment="Center">
 
-            <Button Grid.Column="3"
-                    Content="Play"
-                    Click="Play_Click" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-            <ToggleButton Grid.Column="4"
-                          Content="Mute"
-                          IsChecked="{Binding ElementName=mediaElement, Path=IsMuted}" />
+                <!-- Stop button -->
+                <Button Grid.Column="0"
+                    Click="Stop_Click">
+                    <Border Width="18" Height="20"
+                            Background="{StaticResource redRadial}"
+                            CornerRadius="1"
+                            BorderBrush="{StaticResource controlOutline}"
+                            BorderThickness="1" >
+                        <Rectangle Width="15" Height="10"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="0 1 0 0"
+                                   Fill="{StaticResource glossBrush}"
+                                   RadiusX="1" RadiusY="1" />
+                    </Border>
+                </Button>
 
-            <Slider Grid.Column="5"
+                <!-- Play/Pause button -->
+                <Button Grid.Column="1"
+                    Click="Play_Click">
+                    <Grid>
+                        <!-- Play -->
+                        <Polygon Fill="{StaticResource yellowGradient}"
+                                 Stroke="{StaticResource chromeOutline}"
+                                 Points="0, 0 18, 10 0, 18" />
+                        <!-- Pause -->
+                        <Canvas Visibility="Hidden">
+                            <Rectangle Height="18"
+                                       Fill="{StaticResource yellowGradient}"
+                                       Stroke="{StaticResource chromeOutline}"
+                                       Width="6" />
+                            <Rectangle Height="18"
+                                       Fill="{StaticResource yellowGradient}"
+                                       Stroke="{StaticResource chromeOutline}"
+                                       Width="6"
+                                       Canvas.Left="8" />
+                        </Canvas>
+                    </Grid>
+                </Button>
+
+                <!-- Mute button -->
+                <ToggleButton Grid.Column="2"
+                          IsChecked="{Binding ElementName=mediaElement,
+                                              Path=IsMuted}">
+                    <Canvas Width="20" Height="20">
+                        <!-- The Speaker -->
+                        <Path Fill="{StaticResource redRadial}"
+                              Stroke="{StaticResource controlOutline}"
+                              StrokeLineJoin="Round">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="12, 5"
+                                                IsClosed="True">
+                                        <LineSegment Point="0, 6" />
+                                        <PolyLineSegment Points="0, 14 12, 15 17, 20" />
+                                        <ArcSegment Point="17, 0"
+                                                    Size="30, 30" />
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        
+                        <!-- Highlight -->
+                        <Path Fill="{StaticResource glossBrush}">
+                            <Path.Data>
+                                <PathGeometry>
+                                    <PathFigure StartPoint="13, 6"
+                                                IsClosed="True">
+                                        <PolyLineSegment Points="1, 7 1, 11 17.5, 11" />
+                                        <ArcSegment Point="16.5, 2"
+                                                    Size="30, 30" />
+                                    </PathFigure>
+                                </PathGeometry>
+                            </Path.Data>
+                        </Path>
+                        
+                        <!-- Sound Waves -->
+                        <Polygon Points="20, 6 25, 0 27, 3"
+                                 Fill="{StaticResource textBrush}" />
+                        <Polygon Points="21, 11 28, 9 28, 13"
+                                 Fill="{StaticResource textBrush}" />
+                        <Polygon Points="20, 16 24, 21 26, 18"
+                                 Fill="{StaticResource textBrush}" />
+                    </Canvas>
+                </ToggleButton>
+
+            </Grid>
+
+            <!-- Volume Controler -->
+            <Slider Grid.Column="2"
+                    VerticalAlignment="Center"
+                    Margin="0 0 10 0"
                     Minimum="0"
                     Maximum="1"
-                    Value="{Binding ElementName=mediaElement, Path=Volume}" />
-
+                    Value="{Binding ElementName=mediaElement,
+                                    Path=Volume}" />
+            
         </Grid>
 
+        <!-- Current playing time on a bar -->
         <Slider x:Name="progressSlider"
                 DockPanel.Dock="Bottom"
                 Minimum="0"
