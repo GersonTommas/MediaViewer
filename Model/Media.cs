@@ -4,7 +4,6 @@ using System.IO;
 
 namespace MediaViewer.Model
 {
-    // Added Comment
     /// <summary>
     /// Model that maps the Media class.
     /// </summary>
