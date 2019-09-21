@@ -10,7 +10,7 @@
                 <ResourceDictionary Source="Resources\ColorsAndBrushes.xaml" />
                 <ResourceDictionary Source="Resources\DefaultStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            
         </ResourceDictionary>
+        
     </Application.Resources>
 </Application>
