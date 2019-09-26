@@ -32,6 +32,22 @@ namespace MediaViewer.Presenter
 
 
         #region Public Functions
+        /// <summary>
+        /// Displays the FontViewerView page
+        /// </summary>
+        public void ShowFonts()
+        {
+            Display<FontViewerView>();
+        }
+
+        /// <summary>
+        /// Displays the SimpleContactsView page
+        /// </summary>
+        public void ShowContacts()
+        {
+            Display<SimpleContactsView>();
+        }
+
 
         /// <summary>
         /// Displays the PictureView page loading the required images
@@ -84,6 +100,17 @@ namespace MediaViewer.Presenter
             _controller.DisplayInShell(view);
         }
 
+        /// <summary>
+        /// Loads the required View without any DataContext
+        /// </summary>
+        /// <typeparam name="View"> The page to display </typeparam>
+        private void Display<View>()
+            where View : UserControl, new()
+        {
+            View view = new View();
+
+            _controller.DisplayInShell(view);
+        }
         #endregion
 
     }

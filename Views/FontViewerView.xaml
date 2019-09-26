@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="MediaViewer.Views.FontViewerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:uc="clr-namespace:MediaViewer.UserControler">
+    
+    <DockPanel Margin="8">
+        
+        <!-- Rounded Border for the Information Title -->
+        <Border DockPanel.Dock="Top"
+                CornerRadius="6"
+                BorderThickness="1"
+                BorderBrush="Gray"
+                Background="LightGray"
+                Padding="8"
+                Margin="0 0 0 8">
+            
+            <!-- Information Title -->
+            <TextBlock FontSize="14"
+                       TextWrapping="Wrap">
+                <Bold><Italic>Instructions</Italic></Bold>
+                <LineBreak />
+                Select a font to view from the list below.
+                You can change the text by typing in the region at the bottom.
+            </TextBlock>
+        </Border>
+
+        
+        <!-- Font List -->
+        <ListBox x:Name="FontList"
+                 DockPanel.Dock="Left"
+                 DataContext="{x:Static Fonts.SystemFontFamilies}"
+                 ItemsSource="{Binding}"
+                 Width="160">
+            <ListBox.ToolTip>
+                <ToolTip>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Path=Count, Mode=OneTime}" />
+                        <TextBlock Text=" fonts are installed." />
+                    </StackPanel>
+                </ToolTip>
+            </ListBox.ToolTip>
+        </ListBox>
+
+
+        <!-- User input Frase -->
+        <TextBox x:Name="SampleText"
+                 DockPanel.Dock="Bottom"
+                 MinLines="4"
+                 Margin="8 0"
+                 TextWrapping="Wrap"
+                 ToolTip="Type here to change the preview text.">
+            The Quick brown fox jumps over the lazy dog.
+        </TextBox>
+
+        
+        <!-- Four example lines with diferent text sizes -->
+        <StackPanel Margin="8 0 0 8">
+            <TextBox Text="{Binding ElementName=SampleText, Path=Text}"
+                 FontFamily="{Binding ElementName=FontList, Path=SelectedItem}"
+                 FontSize="10"
+                 TextWrapping="Wrap"
+                 Margin="0 0 0 4" />
+            <TextBox Text="{Binding ElementName=SampleText, Path=Text}"
+                 FontFamily="{Binding ElementName=FontList, Path=SelectedItem}"
+                 FontSize="16"
+                 TextWrapping="Wrap"
+                 Margin="0 0 0 4" />
+            <TextBox Text="{Binding ElementName=SampleText, Path=Text}"
+                 FontFamily="{Binding ElementName=FontList, Path=SelectedItem}"
+                 FontSize="24"
+                 TextWrapping="Wrap"
+                 Margin="0 0 0 4" />
+            <TextBox Text="{Binding ElementName=SampleText, Path=Text}"
+                 FontFamily="{Binding ElementName=FontList, Path=SelectedItem}"
+                 FontSize="32"
+                 TextWrapping="Wrap"
+                 Margin="0 0 0 4" />
+        </StackPanel>
+        
+    </DockPanel>
+    
+</UserControl>
