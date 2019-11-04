@@ -75,6 +75,12 @@ namespace MediaViewer.Presenter
             Display<VideoView, Media>(Environment.GetFolderPath(Environment.SpecialFolder.MyVideos), true, "*.wmv", "*.avi", "*.mp4");
         }
 
+        //TEST VOID FOR BUTTON PRESS
+        public void TEST()
+        {
+            Display<AuutomaticChhangeNotification>();
+        }
+
         #endregion
 
 

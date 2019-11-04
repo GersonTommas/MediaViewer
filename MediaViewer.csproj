@@ -56,11 +56,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\Media.cs" />
+    <Compile Include="Model\Person.cs" />
     <Compile Include="Model\Picture.cs" />
     <Compile Include="Presenter\MediaPresenter.cs" />
     <Compile Include="Presenter\MenuPresenter.cs" />
     <Compile Include="UserControl\MediaPlayer.xaml.cs">
       <DependentUpon>MediaPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AuutomaticChhangeNotification.xaml.cs">
+      <DependentUpon>AuutomaticChhangeNotification.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\FontViewerView.xaml.cs">
       <DependentUpon>FontViewerView.xaml</DependentUpon>
@@ -101,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControl\MediaPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AuutomaticChhangeNotification.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

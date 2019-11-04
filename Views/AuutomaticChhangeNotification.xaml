@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="MediaViewer.Views.AuutomaticChhangeNotification"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
+             xmlns:uc="clr-namespace:MediaViewer.UserControler">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO" />
+            <RowDefinition Height="AUTO" />
+        </Grid.RowDefinitions>
+        
+        <TextBox Text="{Binding Path=FirstName,Mode=TwoWay}"
+                 Margin="4" />
+        <Button Grid.Row="1"
+                Height="40"                Margin="4"
+                Click="Button_Click"
+                Content="{Binding Path=FirstName, Mode=TwoWay}" />
+        
+    </Grid>
+</UserControl>

@@ -16,25 +16,22 @@ using System.Windows.Shapes;
 namespace MediaViewer.Views
 {
     /// <summary>
-    /// Interaction logic for SimpleContactsView.xaml
+    /// Interaction logic for AuutomaticChhangeNotification.xaml
     /// </summary>
-    public partial class SimpleContactsView : UserControl
+    public partial class AuutomaticChhangeNotification : UserControl
     {
         /// <summary>
-        /// Defalut constructor
+        /// Default Constructor
         /// </summary>
-        public SimpleContactsView()
+        public AuutomaticChhangeNotification()
         {
             InitializeComponent();
+            DataContext = new Person();
         }
 
-        /// <summary>
-        /// Action taken when the Save button is clicked
-        /// </summary>
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Show Message
-            MessageBox.Show("Contact saved.", "Save");
+            ((Person)DataContext).FirstName = "My New Name";
         }
     }
 }

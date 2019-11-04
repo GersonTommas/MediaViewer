@@ -58,5 +58,12 @@ namespace MediaViewer.Views
         {
             Presenter.DisplayPictures();
         }
+
+
+        // TEST BUTTON
+        private void TEST_Click(object sender, RoutedEventArgs e)
+        {
+            Presenter.TEST();
+        }
     }
 }
